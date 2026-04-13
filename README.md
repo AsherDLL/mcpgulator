@@ -1,6 +1,6 @@
 # mcpgulator
 
-An MCP (Model Context Protocol) server for [JTAGulator](https://github.com/grandideastudio/jtagulator), the open-source hardware hacking tool by Joe Grand. Allows AI assistants that support MCP to interact with a JTAGulator device over serial, running JTAG/UART/SWD/GPIO scans and commands through a structured tool interface.
+An MCP (Model Context Protocol) server for [JTAGulator](https://github.com/grandideastudio/jtagulator) by Joe Grand. Allows AI assistants that support MCP to interact with a JTAGulator device over serial, running JTAG/UART/SWD/GPIO scans and commands through a structured tool interface.
 
 ## How it works
 
