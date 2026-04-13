@@ -165,6 +165,19 @@ mcpgulator/
     server.py                  # MCP server entry point
 ```
 
+## Contributing
+
+Contributions are welcome! Feel free to open issues for bugs, feature requests, or questions.
+
+To contribute code:
+
+1. Fork the repository.
+2. Create a branch from `main`.
+3. Make your changes and commit.
+4. Open a pull request against `main`.
+
+All pull requests are reviewed before merging.
+
 ## License
 
 [GPL-3.0](LICENSE)
