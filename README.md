@@ -24,6 +24,8 @@ cd mcpgulator
 pip install -e .
 ```
 
+This installs the `mcpgulator` command and all dependencies (`mcp`, `pyserial`, `pyyaml`). No separate `requirements.txt` needed.
+
 ## Configuration
 
 Set environment variables to control the serial connection:
@@ -52,7 +54,13 @@ python -m mcpgulator
 
 ### With Claude Code
 
-Add to your MCP server configuration (`~/.claude/settings.json` or project-level `.mcp.json`):
+**Enabling** -- add the server using the CLI:
+
+```
+claude mcp add mcpgulator mcpgulator -e MCPGULATOR_PORT=/dev/tty.usbserial-A100ABCD
+```
+
+Or add it manually to your MCP server configuration. For user-wide availability, edit `~/.claude/settings.json`. For a single project, create `.mcp.json` in the project root:
 
 ```json
 {
@@ -66,6 +74,20 @@ Add to your MCP server configuration (`~/.claude/settings.json` or project-level
   }
 }
 ```
+
+**Checking status**:
+
+```
+claude mcp list
+```
+
+**Disabling** -- remove the server:
+
+```
+claude mcp remove mcpgulator
+```
+
+Or delete the entry from `settings.json` / `.mcp.json`. The server only runs when a client spawns it, so removing the config entry is all it takes.
 
 ### With other MCP clients
 
