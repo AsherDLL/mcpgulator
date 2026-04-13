@@ -1,0 +1,191 @@
+# JTAGulator command definitions.
+#
+# This file drives tool registration in the MCP server. Each entry defines
+# the menu key sequence, parameters the device will prompt for, and basic
+# metadata. The discovery module (H command) validates this config against
+# what the connected device actually supports at runtime.
+#
+# To add a command: define its key, description, and params (matching the
+# interactive prompts the device sends). The server picks it up on next start.
+
+general:
+  commands:
+    set_voltage:
+      key: "V"
+      description: "Set target I/O voltage (1.2V to 3.3V)"
+      params:
+        - name: voltage
+          prompt: "Voltage"
+          type: float
+          min: 1.2
+          max: 3.3
+    get_version:
+      key: "I"
+      description: "Display JTAGulator version information"
+      params: []
+    get_help:
+      key: "H"
+      description: "Display available commands"
+      params: []
+
+interfaces:
+  jtag:
+    key: "J"
+    description: "JTAG interface"
+    commands:
+      idcode_scan:
+        key: "I"
+        description: "Identify JTAG pinout (IDCODE Scan)"
+        params:
+          - name: start_channel
+            prompt: "Start channel"
+            type: int
+            min: 0
+            max: 23
+          - name: end_channel
+            prompt: "End channel"
+            type: int
+            min: 0
+            max: 23
+      bypass_scan:
+        key: "B"
+        description: "Identify JTAG pinout (BYPASS Scan)"
+        params:
+          - name: start_channel
+            prompt: "Start channel"
+            type: int
+            min: 0
+            max: 23
+          - name: end_channel
+            prompt: "End channel"
+            type: int
+            min: 0
+            max: 23
+      identify_rtck:
+        key: "R"
+        description: "Identify RTCK (adaptive clocking)"
+        params:
+          - name: start_channel
+            prompt: "Start channel"
+            type: int
+            min: 0
+            max: 23
+          - name: end_channel
+            prompt: "End channel"
+            type: int
+            min: 0
+            max: 23
+      get_device_ids:
+        key: "D"
+        description: "Get Device ID(s)"
+        params: []
+      test_bypass:
+        key: "T"
+        description: "Test BYPASS (TDI to TDO)"
+        params: []
+      ir_dr_discovery:
+        key: "Y"
+        description: "Instruction/Data Register (IR/DR) discovery"
+        params: []
+      pin_mapper:
+        key: "P"
+        description: "Pin mapper (EXTEST Scan)"
+        params: []
+      openocd_interface:
+        key: "O"
+        description: "OpenOCD interface"
+        params: []
+
+  uart:
+    key: "U"
+    description: "UART interface"
+    commands:
+      identify_pinout:
+        key: "U"
+        description: "Identify UART pinout"
+        params:
+          - name: start_channel
+            prompt: "Start channel"
+            type: int
+            min: 0
+            max: 23
+          - name: end_channel
+            prompt: "End channel"
+            type: int
+            min: 0
+            max: 23
+      identify_txd:
+        key: "T"
+        description: "Identify UART pinout (TXD only, continuous)"
+        params:
+          - name: start_channel
+            prompt: "Start channel"
+            type: int
+            min: 0
+            max: 23
+          - name: end_channel
+            prompt: "End channel"
+            type: int
+            min: 0
+            max: 23
+      passthrough:
+        key: "P"
+        description: "UART passthrough"
+        params:
+          - name: txd_channel
+            prompt: "TXD channel"
+            type: int
+            min: 0
+            max: 23
+          - name: rxd_channel
+            prompt: "RXD channel"
+            type: int
+            min: 0
+            max: 23
+          - name: baud_rate
+            prompt: "Baud rate"
+            type: int
+
+  gpio:
+    key: "G"
+    description: "GPIO interface"
+    commands:
+      read_once:
+        key: "R"
+        description: "Read all channels (input, one shot)"
+        params: []
+      read_continuous:
+        key: "C"
+        description: "Read all channels (input, continuous)"
+        params: []
+      write_channels:
+        key: "W"
+        description: "Write all channels (output)"
+        params: []
+      logic_analyzer:
+        key: "L"
+        description: "Logic analyzer (OLS/SUMP)"
+        params: []
+
+  swd:
+    key: "S"
+    description: "SWD interface"
+    commands:
+      idcode_scan:
+        key: "I"
+        description: "Identify SWD pinout (IDCODE Scan)"
+        params:
+          - name: start_channel
+            prompt: "Start channel"
+            type: int
+            min: 0
+            max: 23
+          - name: end_channel
+            prompt: "End channel"
+            type: int
+            min: 0
+            max: 23
+      get_device_id:
+        key: "D"
+        description: "Get Device ID"
+        params: []
