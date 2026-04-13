@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/mcpgulator_logo.png" alt="mcpgulator" width="600"/>
+</p>
+
 # mcpgulator
 
 An MCP (Model Context Protocol) server for [JTAGulator](https://github.com/grandideastudio/jtagulator) by Joe Grand. Allows AI assistants that support MCP to interact with a JTAGulator device over serial, running JTAG/UART/SWD/GPIO scans and commands through a structured tool interface.
